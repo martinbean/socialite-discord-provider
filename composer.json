@@ -1,0 +1,43 @@
+{
+    "name": "martinbean/socialite-discord-provider",
+    "description": "A Discord provider for Laravel Socialite.",
+    "version": "1.0",
+    "type": "library",
+    "keywords": [
+        "laravel",
+        "socialite",
+        "discord",
+        "oauth"
+    ],
+    "readme": "README.md",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Martin Bean",
+            "email": "martin@martinbean.co.uk",
+            "homepage": "https://martinbean.co.uk"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/martinbean/socialite-discord-provider/issues",
+        "source": "https://github.com/martinbean/socialite-discord-provider"
+    },
+    "require": {
+        "laravel/socialite": "^4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "MartinBean\\Laravel\\Socialite\\": "src/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MartinBean\\Laravel\\Socialite\\DiscordServiceProvider"
+            ]
+        }
+    }
+}
