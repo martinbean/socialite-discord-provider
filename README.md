@@ -85,5 +85,5 @@ return Socialite::driver('discord')
 ## Issues
 If you have any problems using this package, please open an issue on the [GitHub repository][2].
 
-[1] https://laravel.com/docs/master/socialite
+[1]: https://laravel.com/docs/master/socialite
 [2]: https://github.com/martinbean/socialite-discord-provider
