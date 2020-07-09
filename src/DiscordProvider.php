@@ -22,6 +22,16 @@ class DiscordProvider extends AbstractProvider implements ProviderInterface
     protected $scopeSeparator = ' ';
 
     /**
+     * Create a new bot redirect.
+     *
+     * @return \MartinBean\Laravel\Socialite\BotRedirectBuilder
+     */
+    public function bot()
+    {
+        return new BotRedirectBuilder($this->clientId);
+    }
+
+    /**
      * {@inheritDoc}
      */
     protected function getAuthUrl($state)
