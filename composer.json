@@ -1,7 +1,7 @@
 {
     "name": "martinbean/socialite-discord-provider",
     "description": "A Discord provider for Laravel Socialite.",
-    "version": "1.0",
+    "version": "1.1.0",
     "type": "library",
     "keywords": [
         "laravel",
@@ -23,6 +23,7 @@
         "source": "https://github.com/martinbean/socialite-discord-provider"
     },
     "require": {
+        "facade/ignition-contracts": "^1.0",
         "laravel/socialite": "^4.0"
     },
     "autoload": {

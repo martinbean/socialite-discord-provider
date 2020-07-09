@@ -24,8 +24,8 @@ class DiscordServiceProvider extends ServiceProvider
 
             return new DiscordProvider(
                 $app->make('request'),
-                Arr::get($config, 'client_id', ''),
-                Arr::get($config, 'client_secret', ''),
+                $config['client_id'],
+                $config['client_secret'],
                 Str::startsWith($redirect, '/') ? $app->make('url')->to($redirect) : $redirect,
                 Arr::get($config, 'guzzle', [])
             );
