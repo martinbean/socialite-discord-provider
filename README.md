@@ -3,7 +3,7 @@ A provider for [Laravel Socialite][1] that allows authentication as a Discord us
 
 ## Installation
 ```
-composer require martinbean/socialite-discord-provider:^1.1
+composer require martinbean/socialite-discord-provider:^1.2
 ```
 
 ## Usage
