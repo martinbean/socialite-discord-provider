@@ -1,7 +1,7 @@
 {
     "name": "martinbean/socialite-discord-provider",
     "description": "A Discord provider for Laravel Socialite.",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "type": "library",
     "keywords": [
         "laravel",
