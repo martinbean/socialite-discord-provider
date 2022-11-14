@@ -63,6 +63,23 @@ class DiscordProvider extends AbstractProvider implements ProviderInterface
         return json_decode($response->getBody(), true);
     }
 
+    private function getGuildsByToken(array $scopes, $token)
+    {
+        if (in_array('guilds', $scopes)) {
+            $guildsUrl = 'https://discord.com/api/users/@me/guilds';
+
+            $response = $this->getHttpClient()->get($guildsUrl, [
+                'headers' => [
+                    'Authorization' => 'Bearer '.$token,
+                ],
+            ]);
+
+            return ['guilds' => json_decode($response->getBody(), true)];
+        } else {
+            return [];
+        }
+    }
+
     /**
      * {@inheritDoc}
      */
@@ -88,5 +105,32 @@ class DiscordProvider extends AbstractProvider implements ProviderInterface
             'grant_type' => 'authorization_code',
             'redirect_uri' => $this->redirectUrl,
         ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function user()
+    {
+        if ($this->user) {
+            return $this->user;
+        }
+
+        if ($this->hasInvalidState()) {
+            throw new InvalidStateException;
+        }
+
+        $response = $this->getAccessTokenResponse($this->getCode());
+
+        $token = Arr::get($response, 'access_token');
+
+        $scopes = explode($this->scopeSeparator, Arr::get($response, 'scope', ''));
+
+        $this->user = $this->mapUserToObject(array_merge($this->getUserByToken($token), $this->getGuildsByToken($scopes, $token)));
+
+        return $this->user->setToken($token)
+            ->setRefreshToken(Arr::get($response, 'refresh_token'))
+            ->setExpiresIn(Arr::get($response, 'expires_in'))
+            ->setApprovedScopes($scopes);
     }
 }
